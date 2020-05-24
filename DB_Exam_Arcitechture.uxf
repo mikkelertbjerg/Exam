@@ -1,25 +1,25 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <diagram program="umlet" version="14.3.0">
-  <zoom_level>9</zoom_level>
+  <zoom_level>8</zoom_level>
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>594</x>
-      <y>270</y>
-      <w>225</w>
-      <h>99</h>
+      <x>560</x>
+      <y>256</y>
+      <w>200</w>
+      <h>88</h>
     </coordinates>
-    <panel_attributes>Blackbox business layer
+    <panel_attributes>Dummy business layer
 -</panel_attributes>
     <additional_attributes/>
   </element>
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>774</x>
-      <y>810</y>
-      <w>90</w>
-      <h>36</h>
+      <x>720</x>
+      <y>736</y>
+      <w>80</w>
+      <h>32</h>
     </coordinates>
     <panel_attributes>MySQL
 -
@@ -30,10 +30,10 @@
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>594</x>
-      <y>90</y>
-      <w>225</w>
-      <h>99</h>
+      <x>560</x>
+      <y>96</y>
+      <w>200</w>
+      <h>88</h>
     </coordinates>
     <panel_attributes>Blackbox front-end
 -</panel_attributes>
@@ -42,10 +42,10 @@
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>27</x>
-      <y>477</y>
-      <w>1314</w>
-      <h>396</h>
+      <x>56</x>
+      <y>440</y>
+      <w>1168</w>
+      <h>352</h>
     </coordinates>
     <panel_attributes>Actual datalayer
 -</panel_attributes>
@@ -54,10 +54,10 @@
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>81</x>
-      <y>585</y>
-      <w>90</w>
-      <h>36</h>
+      <x>104</x>
+      <y>536</y>
+      <w>80</w>
+      <h>32</h>
     </coordinates>
     <panel_attributes>MongoDB
 -
@@ -67,10 +67,10 @@
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>774</x>
-      <y>585</y>
-      <w>90</w>
-      <h>36</h>
+      <x>720</x>
+      <y>536</y>
+      <w>80</w>
+      <h>32</h>
     </coordinates>
     <panel_attributes>Neo4J
 -</panel_attributes>
@@ -79,10 +79,10 @@
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>1242</x>
-      <y>585</y>
-      <w>90</w>
-      <h>36</h>
+      <x>1136</x>
+      <y>536</y>
+      <w>80</w>
+      <h>32</h>
     </coordinates>
     <panel_attributes>Redis
 -</panel_attributes>
@@ -91,10 +91,10 @@
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>666</x>
-      <y>180</y>
-      <w>27</w>
-      <h>108</h>
+      <x>624</x>
+      <y>176</y>
+      <w>24</w>
+      <h>96</h>
     </coordinates>
     <panel_attributes>lt=&lt;-</panel_attributes>
     <additional_attributes>10.0;100.0;10.0;10.0</additional_attributes>
@@ -102,10 +102,10 @@
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>162</x>
-      <y>594</y>
-      <w>630</w>
-      <h>27</h>
+      <x>176</x>
+      <y>544</y>
+      <w>560</w>
+      <h>24</h>
     </coordinates>
     <panel_attributes>lt=&lt;-</panel_attributes>
     <additional_attributes>680.0;10.0;10.0;10.0</additional_attributes>
@@ -113,10 +113,10 @@
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>783</x>
-      <y>612</y>
-      <w>27</w>
-      <h>216</h>
+      <x>728</x>
+      <y>560</y>
+      <w>24</w>
+      <h>192</h>
     </coordinates>
     <panel_attributes>lt=&lt;-</panel_attributes>
     <additional_attributes>10.0;220.0;10.0;10.0</additional_attributes>
@@ -124,10 +124,10 @@
   <element>
     <id>UMLNote</id>
     <coordinates>
-      <x>522</x>
-      <y>774</y>
-      <w>243</w>
-      <h>72</h>
+      <x>496</x>
+      <y>704</y>
+      <w>216</w>
+      <h>64</h>
     </coordinates>
     <panel_attributes>bg=yellow
 With a short time interval,
@@ -139,10 +139,10 @@ to an SQL db for, book keeping purposes</panel_attributes>
   <element>
     <id>UMLNote</id>
     <coordinates>
-      <x>180</x>
-      <y>531</y>
-      <w>225</w>
-      <h>63</h>
+      <x>192</x>
+      <y>488</y>
+      <w>200</w>
+      <h>56</h>
     </coordinates>
     <panel_attributes>bg=yellow
 Every 5 mintes or so,
@@ -153,10 +153,10 @@ is sent to Neo4J for analytic purposes.</panel_attributes>
   <element>
     <id>UMLNote</id>
     <coordinates>
-      <x>144</x>
-      <y>324</y>
-      <w>306</w>
-      <h>63</h>
+      <x>160</x>
+      <y>328</y>
+      <w>272</w>
+      <h>56</h>
     </coordinates>
     <panel_attributes>bg=yellow
 Everytime an update/change is made by
@@ -168,10 +168,10 @@ and what was removed.</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>126</x>
-      <y>306</y>
-      <w>486</w>
-      <h>297</h>
+      <x>144</x>
+      <y>288</y>
+      <w>432</w>
+      <h>264</h>
     </coordinates>
     <panel_attributes>lt=&lt;-</panel_attributes>
     <additional_attributes>10.0;310.0;10.0;10.0;520.0;10.0</additional_attributes>
@@ -179,10 +179,10 @@ and what was removed.</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>855</x>
-      <y>594</y>
-      <w>405</w>
-      <h>27</h>
+      <x>792</x>
+      <y>544</y>
+      <w>360</w>
+      <h>24</h>
     </coordinates>
     <panel_attributes>lt=&lt;-</panel_attributes>
     <additional_attributes>430.0;10.0;10.0;10.0</additional_attributes>
@@ -190,10 +190,10 @@ and what was removed.</panel_attributes>
   <element>
     <id>UMLNote</id>
     <coordinates>
-      <x>900</x>
-      <y>612</y>
-      <w>297</w>
-      <h>63</h>
+      <x>832</x>
+      <y>560</y>
+      <w>264</w>
+      <h>56</h>
     </coordinates>
     <panel_attributes>bg=yellow
 Every 15 minutes or so, redis fetches data from 
@@ -204,10 +204,10 @@ which are generated by Neo4js analytic cababilities</panel_attributes>
   <element>
     <id>UMLNote</id>
     <coordinates>
-      <x>36</x>
-      <y>630</y>
-      <w>261</w>
-      <h>117</h>
+      <x>64</x>
+      <y>576</y>
+      <w>232</w>
+      <h>104</h>
     </coordinates>
     <panel_attributes>bg=yellow
 MongoDBs primary functionality
@@ -222,10 +222,10 @@ or if you clear your cookies in your browser.</panel_attributes>
   <element>
     <id>UMLNote</id>
     <coordinates>
-      <x>693</x>
-      <y>513</y>
-      <w>252</w>
-      <h>63</h>
+      <x>648</x>
+      <y>472</y>
+      <w>224</w>
+      <h>56</h>
     </coordinates>
     <panel_attributes>bg=yellow
 Neo4j is the primary DB, where all the data
@@ -237,10 +237,10 @@ to other sub DBs</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>819</x>
-      <y>612</y>
-      <w>27</w>
-      <h>216</h>
+      <x>760</x>
+      <y>560</y>
+      <w>24</w>
+      <h>192</h>
     </coordinates>
     <panel_attributes>lt=&lt;-</panel_attributes>
     <additional_attributes>10.0;10.0;10.0;220.0</additional_attributes>
@@ -248,10 +248,10 @@ to other sub DBs</panel_attributes>
   <element>
     <id>UMLNote</id>
     <coordinates>
-      <x>873</x>
-      <y>774</y>
-      <w>243</w>
-      <h>72</h>
+      <x>808</x>
+      <y>704</y>
+      <w>216</w>
+      <h>64</h>
     </coordinates>
     <panel_attributes>bg=yellow
 The invoices, are then sent back to
@@ -263,10 +263,10 @@ in neo4j.</panel_attributes>
   <element>
     <id>UMLNote</id>
     <coordinates>
-      <x>963</x>
-      <y>378</y>
-      <w>315</w>
-      <h>90</h>
+      <x>888</x>
+      <y>352</y>
+      <w>280</w>
+      <h>80</h>
     </coordinates>
     <panel_attributes>bg=yellow
 The third part software is responsible for generating
@@ -279,10 +279,10 @@ as well as the consumer habbits. </panel_attributes>
   <element>
     <id>UMLNote</id>
     <coordinates>
-      <x>36</x>
-      <y>756</y>
-      <w>261</w>
-      <h>99</h>
+      <x>64</x>
+      <y>688</y>
+      <w>232</w>
+      <h>88</h>
     </coordinates>
     <panel_attributes>bg=yellow
 Inorder to avoid duplicate data, a flag could
@@ -296,10 +296,10 @@ again.</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>1143</x>
-      <y>306</y>
-      <w>162</w>
-      <h>297</h>
+      <x>1048</x>
+      <y>288</y>
+      <w>144</w>
+      <h>264</h>
     </coordinates>
     <panel_attributes>lt=&lt;-</panel_attributes>
     <additional_attributes>10.0;10.0;160.0;10.0;160.0;310.0</additional_attributes>
@@ -307,10 +307,10 @@ again.</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>720</x>
-      <y>180</y>
-      <w>27</w>
-      <h>108</h>
+      <x>672</x>
+      <y>176</y>
+      <w>24</w>
+      <h>96</h>
     </coordinates>
     <panel_attributes>lt=&lt;-</panel_attributes>
     <additional_attributes>10.0;10.0;10.0;100.0</additional_attributes>
@@ -318,10 +318,10 @@ again.</panel_attributes>
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>927</x>
-      <y>270</y>
-      <w>225</w>
-      <h>99</h>
+      <x>856</x>
+      <y>256</y>
+      <w>200</w>
+      <h>88</h>
     </coordinates>
     <panel_attributes>Blackbox third party algorithms
 -</panel_attributes>
@@ -330,10 +330,10 @@ again.</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>810</x>
-      <y>306</y>
-      <w>135</w>
-      <h>27</h>
+      <x>752</x>
+      <y>288</y>
+      <w>120</w>
+      <h>24</h>
     </coordinates>
     <panel_attributes>lt=&lt;-</panel_attributes>
     <additional_attributes>10.0;10.0;130.0;10.0</additional_attributes>
@@ -341,10 +341,10 @@ again.</panel_attributes>
   <element>
     <id>UMLNote</id>
     <coordinates>
-      <x>540</x>
-      <y>378</y>
-      <w>324</w>
-      <h>63</h>
+      <x>512</x>
+      <y>352</y>
+      <w>288</w>
+      <h>56</h>
     </coordinates>
     <panel_attributes>bg=yellow
 Realistically all the databases communicates with a
@@ -356,15 +356,122 @@ directly to their sources/targets</panel_attributes>
   <element>
     <id>UMLNote</id>
     <coordinates>
-      <x>540</x>
-      <y>18</y>
-      <w>324</w>
-      <h>63</h>
+      <x>512</x>
+      <y>32</y>
+      <w>288</w>
+      <h>56</h>
     </coordinates>
     <panel_attributes>bg=yellow
 Users information is generated here,
 and is to be processed by one or more business layers,
 which then sends data to the relevant database(s)</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLNote</id>
+    <coordinates>
+      <x>160</x>
+      <y>304</y>
+      <w>136</w>
+      <h>24</h>
+    </coordinates>
+    <panel_attributes>bg=red
+This will not be coded.</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLNote</id>
+    <coordinates>
+      <x>1184</x>
+      <y>352</y>
+      <w>136</w>
+      <h>24</h>
+    </coordinates>
+    <panel_attributes>bg=red
+This will not be coded.</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLNote</id>
+    <coordinates>
+      <x>296</x>
+      <y>304</y>
+      <w>136</w>
+      <h>24</h>
+    </coordinates>
+    <panel_attributes>bg=green
+Create API</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLNote</id>
+    <coordinates>
+      <x>192</x>
+      <y>464</y>
+      <w>136</w>
+      <h>24</h>
+    </coordinates>
+    <panel_attributes>bg=green
+Create python script</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLNote</id>
+    <coordinates>
+      <x>528</x>
+      <y>656</y>
+      <w>136</w>
+      <h>24</h>
+    </coordinates>
+    <panel_attributes>bg=green
+Create python script</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLNote</id>
+    <coordinates>
+      <x>912</x>
+      <y>520</y>
+      <w>136</w>
+      <h>24</h>
+    </coordinates>
+    <panel_attributes>bg=green
+Create python script</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLNote</id>
+    <coordinates>
+      <x>808</x>
+      <y>656</y>
+      <w>136</w>
+      <h>24</h>
+    </coordinates>
+    <panel_attributes>bg=green
+Create python script</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>752</x>
+      <y>760</y>
+      <w>24</w>
+      <h>104</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;-</panel_attributes>
+    <additional_attributes>10.0;110.0;10.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>664</x>
+      <y>848</y>
+      <w>200</w>
+      <h>88</h>
+    </coordinates>
+    <panel_attributes>Blackbox warehouse/fleet
+-</panel_attributes>
     <additional_attributes/>
   </element>
 </diagram>
