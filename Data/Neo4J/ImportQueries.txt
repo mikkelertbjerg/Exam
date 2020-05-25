@@ -1,0 +1,77 @@
+// DATA FROM CSVs
+
+LOAD CSV FROM 'file:///zakeovich_dk_db_cphbusiness_table_country.csv' AS row
+WITH toInteger(row[0]) AS countryId, row[1] AS countryName, row[2] AS countryCode
+MERGE (c:Country {countryId: countryId})
+  SET c.countryName = countryName, c.countryCode = countryCode
+RETURN count(c)
+
+LOAD CSV FROM 'file:///zakeovich_dk_db_cphbusiness_table_zipcode.csv' AS row
+WITH toInteger(row[0]) AS zipcodeId, row[1] AS zipcode, toInteger(row[2]) AS countryId
+MERGE (z:Zipcode {zipcodeId: zipcodeId})
+  SET z.zipcode = zipcode, z.countryId = countryId
+RETURN count(z)
+
+LOAD CSV FROM 'file:///zakeovich_dk_db_cphbusiness_table_city.csv' AS row
+WITH toInteger(row[0]) AS cityId, row[1] AS name, toInteger(row[2]) AS zipcodeId
+MERGE (c:City {cityId: cityId})
+  SET c.name = name, c.zipcodeId = zipcodeId
+RETURN count(c)
+
+LOAD CSV FROM 'file:///zakeovich_dk_db_cphbusiness_table_address.csv' AS row
+WITH toInteger(row[0]) AS addressId, row[1] AS name, row[2] AS No, toInteger(row[3]) AS cityId
+MERGE (a:Address {addressId: addressId})
+  SET a.name = name, a.No = No, a.cityId = cityId
+RETURN count(a)
+
+LOAD CSV FROM 'file:///zakeovich_dk_db_cphbusiness_table_category.csv' AS row
+WITH toInteger(row[0]) AS categoryId, row[1] AS name
+MERGE (a:Category {categoryId: categoryId})
+  SET a.name = name
+RETURN count(a)
+
+LOAD CSV FROM 'file:///zakeovich_dk_db_cphbusiness_table_product.csv' AS row
+WITH toInteger(row[0]) AS productId, row[1] AS name, row[2] AS price, toInteger(row[3]) AS categoryId
+MERGE (a:Product {productId: productId})
+  SET a.name = name, a.price = price, a.categoryId = categoryId
+RETURN count(a)
+
+LOAD CSV FROM 'file:///zakeovich_dk_db_cphbusiness_table_contact_type.csv' AS row
+WITH toInteger(row[0]) AS contactTypeId, row[1] AS type
+MERGE (a:Contact_Type {contactTypeId: contactTypeId})
+  SET a.type = type
+RETURN count(a)
+
+LOAD CSV FROM 'file:///zakeovich_dk_db_cphbusiness_table_contact_info.csv' AS row
+WITH toInteger(row[0]) AS contact_info_id, toInteger(row[1]) AS contactTypeId, row[2] AS info
+MERGE (a:Contact_Info {contact_info_id: contact_info_id})
+  SET a.contactTypeId = contactTypeId, a.info = info
+RETURN count(a)
+
+// RELATIONS
+
+MATCH (a:Country),(b:Zipcode)
+WHERE a.countryId = b.countryId
+CREATE (b)-[r:LOCATED_IN]->(a)
+RETURN type(r)
+
+MATCH (a:Zipcode),(b:City)
+WHERE a.zipcodeId = b.zipcodeId
+CREATE (b)-[r:PLACED_IN]->(a)
+RETURN type(r)
+
+MATCH (a:City),(b:Address)
+WHERE a.cityId = b.cityId
+CREATE (b)-[r:LOCATED_AT]->(a)
+RETURN type(r)
+
+MATCH (a:Category),(b:Product)
+WHERE a.categoryId = b.categoryId
+CREATE (b)-[r:IS_A]->(a)
+RETURN type(r)
+
+MATCH (a:Contact_Type),(b:Contact_Info)
+WHERE a.contactTypeId = b.contact_type_id
+CREATE (b)-[r:TYPE_IS_A]->(a)
+RETURN type(r)
+
