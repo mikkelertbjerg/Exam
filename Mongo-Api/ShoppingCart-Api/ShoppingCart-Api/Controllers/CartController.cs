@@ -36,7 +36,6 @@ namespace ShoppingCart_Api.Controllers
         {
             var database = dbClient.GetDatabase("Exam");
             var collection = database.GetCollection<BsonDocument>("Cart");
-
             var document = BsonDocument.Parse(value);
 
             collection.InsertOne(document);
