@@ -22,8 +22,8 @@ x = col.find_one()
 #Local
 #graph = Graph("bolt://localhost:7687", auth=("neo4j", "test"))
 #Hosted
-#graph = Graph("bolt://hobby-ppgaodfmmciegbkemkpmdcel.dbs.graphenedb.com:24787", auth=("dbexam", "5.5mtzoqF4XiFf.mLUvQx7I7UiJ1QZV"))
-graph = Graph(scheme='bolt',host='hobby-ppgaodfmmciegbkemkpmdcel.dbs.graphenedb.com',port=24787, user='dbexam', password='5.5mtzoqF4XiFf.mLUvQx7I7UiJ1QZV',secure=True)
+graph = Graph("bolt://35-202-37-187.gcp-neo4j-sandbox.com:7687", auth=("neo4j", "cy3yxxzcXDN6UKnw"), secure=True)
+#graph = Graph(scheme='bolt',host='hobby-ppgaodfmmciegbkemkpmdcel.dbs.graphenedb.com',port=24787, user='dbexam', password='5.5mtzoqF4XiFf.mLUvQx7I7UiJ1QZV',secure=True)
 #Open the connection
 g_conn = graph.begin()
 
@@ -128,18 +128,20 @@ g_conn.commit()
 
 #Verify commit, by checking if all variables have been commited
 #-----------------------------------------------------------------------------------------
-print(f'Customer create: {g_conn.exists(customer)}')
-print(f'Customer create: {g_conn.exists(address)}')
-print(f'Customer create: {g_conn.exists(city)}')
-print(f'Customer create: {g_conn.exists(zipcode)}')
-print(f'Customer create: {g_conn.exists(country)}')
-print(f'Customer create: {g_conn.exists(order)}')
-print(f'Customer create: {g_conn.exists(product)}')
-print(f'Customer create: {g_conn.exists(category)}')
-print(f'Customer create: {g_conn.exists(product_category)}')
-print(f'Customer create: {g_conn.exists(order_products)}')
-print(f'Customer create: {g_conn.exists(customer_address)}')
-print(f'Customer create: {g_conn.exists(address_city)}')
-print(f'Customer create: {g_conn.exists(city_zipcode)}')
-print(f'Customer create: {g_conn.exists(zipcode_country)}')
-print(f'Customer create: {g_conn.exists(customer_orders)}')
+# =============================================================================
+# print(f'Customer create: {g_conn.exists(customer)}')
+# print(f'Customer create: {g_conn.exists(address)}')
+# print(f'Customer create: {g_conn.exists(city)}')
+# print(f'Customer create: {g_conn.exists(zipcode)}')
+# print(f'Customer create: {g_conn.exists(country)}')
+# print(f'Customer create: {g_conn.exists(order)}')
+# print(f'Customer create: {g_conn.exists(product)}')
+# print(f'Customer create: {g_conn.exists(category)}')
+# print(f'Customer create: {g_conn.exists(product_category)}')
+# print(f'Customer create: {g_conn.exists(order_products)}')
+# print(f'Customer create: {g_conn.exists(customer_address)}')
+# print(f'Customer create: {g_conn.exists(address_city)}')
+# print(f'Customer create: {g_conn.exists(city_zipcode)}')
+# print(f'Customer create: {g_conn.exists(zipcode_country)}')
+# print(f'Customer create: {g_conn.exists(customer_orders)}')
+# =============================================================================
