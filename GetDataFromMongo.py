@@ -15,7 +15,7 @@ db = client["Exam"]
 col = db["Cart"]
 #Get an object from the selected collection
 x = col.find_one()
-
+x
 #Neo4j
 #-----------------------------------------------------------------------------------------
 #Credentials for connecting to the Neo4j db: <db address> <username,password>
@@ -32,7 +32,8 @@ g_conn = graph.begin()
 #-----------------------------------------------------------------------------------------
 customer = Node("Customer",
                 #_id = x['Customer']['CustomerId'],
-                name = x['Customer']['Name'],
+                first_name = x['Customer']['Firstname'],
+                last_name = x['Customer']['Lastname'],
                 birth_date = x['Customer']['Birthdate'],
                 gender = x['Customer']['Gender'],
                 email = x['Customer']['Email'],
