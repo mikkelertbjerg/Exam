@@ -4,7 +4,7 @@ import py2neo as neo
 from py2neo import Node, Relationship, Graph
 
 #MongoDB
-#-----------------------------------------------------------------------------------------
+# =============================================================================
 
 #Credentials fro connecting to the Mongodb
 #Local instance
@@ -15,9 +15,9 @@ db = client["Exam"]
 col = db["Cart"]
 #Get an object from the selected collection
 x = col.find_one()
-
+x
 #Neo4j
-#-----------------------------------------------------------------------------------------
+# =============================================================================
 #Credentials for connecting to the Neo4j db: <db address> <username,password>
 #Local
 #graph = Graph("bolt://localhost:7687", auth=("neo4j", "test"))
@@ -29,10 +29,11 @@ g_conn = graph.begin()
 
 #Define the nodes, and feed it with the information <x> fetches from mongo
 #Customer
-#-----------------------------------------------------------------------------------------
+# =============================================================================
 customer = Node("Customer",
                 #_id = x['Customer']['CustomerId'],
-                name = x['Customer']['Name'],
+                first_name = x['Customer']['Firstname'],
+                last_name = x['Customer']['Lastname'],
                 birth_date = x['Customer']['Birthdate'],
                 gender = x['Customer']['Gender'],
                 email = x['Customer']['Email'],
@@ -41,7 +42,7 @@ customer = Node("Customer",
 g_conn.create(customer)
 
 #Address
-#-----------------------------------------------------------------------------------------
+# =============================================================================
 address = Node("Address",
                    #_id = x['Customer']['Address']['Id'],
                    street = x['Customer']['Address']['StreetName'],
@@ -50,7 +51,7 @@ address = Node("Address",
 g_conn.create(address)
 
 #City
-#-----------------------------------------------------------------------------------------
+# =============================================================================
 city = Node("City",
             #_id = x['Customer']['Address']['City']['Id'],
             name = x['Customer']['Address']['City']['Name'])
@@ -58,14 +59,14 @@ city = Node("City",
 g_conn.create(city)
 
 #Zipcode
-#-----------------------------------------------------------------------------------------
+# =============================================================================
 zipcode = Node("Zipcode",
                #_id = x['Customer']['Address']['City']['Zipcode']['Id'],
                code = x['Customer']['Address']['City']['Zipcode']['Code'],)
 g_conn.create(zipcode)
 
 #Country
-#-----------------------------------------------------------------------------------------
+# =============================================================================
 country = Node("Country",
                #_id = x['Customer']['Address']['City']['Zipcode']['Country']['Id'],
                name = x['Customer']['Address']['City']['Zipcode']['Country']['Name'],
@@ -73,7 +74,7 @@ country = Node("Country",
 g_conn.create(country)
 
 #Order
-#-----------------------------------------------------------------------------------------
+# =============================================================================
 order = Node("Order",
              #_id = ['Customer']['Order']['Id'],
              status = x['Customer']['Order']['Status'],
@@ -82,7 +83,7 @@ order = Node("Order",
 g_conn.create(order)
 
 #Product(s)
-#-----------------------------------------------------------------------------------------
+# =============================================================================
 for p in x['Customer']['Order']['Products']:
     
     quantity = p['Quantity']
@@ -106,7 +107,7 @@ for p in x['Customer']['Order']['Products']:
     #order_products['Price'] = price
 
 #Relationships
-#-----------------------------------------------------------------------------------------
+# =============================================================================
 customer_address = Relationship(customer, "LIVES AT", address)
 g_conn.create(customer_address)
 
@@ -123,11 +124,10 @@ customer_orders = Relationship(customer, "PLACED", order)
 g_conn.create(customer_orders)
 
 #Commit the changes
-#-----------------------------------------------------------------------------------------
+# =============================================================================
 g_conn.commit()
 
 #Verify commit, by checking if all variables have been commited
-#-----------------------------------------------------------------------------------------
 # =============================================================================
 # print(f'Customer create: {g_conn.exists(customer)}')
 # print(f'Customer create: {g_conn.exists(address)}')
@@ -144,4 +144,3 @@ g_conn.commit()
 # print(f'Customer create: {g_conn.exists(city_zipcode)}')
 # print(f'Customer create: {g_conn.exists(zipcode_country)}')
 # print(f'Customer create: {g_conn.exists(customer_orders)}')
-# =============================================================================
