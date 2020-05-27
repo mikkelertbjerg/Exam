@@ -38,22 +38,24 @@ def postNewCustomer(customer):
     
     return customer_id
 
-def postNewProduct(category_id, product):
+def postNewProduct(category_id, product, index):
     connection = mysql.connector.connect(user='zakeovich_dk', password='wdfphg3mbker',
                                      host='mysql98.unoeuro.com',
                                      database='zakeovich_dk_db_cphbusiness')
+    proName = product['ca.name'][index]
+    proPrice = product['ol.price'][index]
     cursor = connection.cursor()
-    cursor.execute(f"SELECT p.id FROM zakeovich_dk_db_cphbusiness.product p WHERE p.name = '{product['p.name'][0]}';")
+    cursor.execute(f"SELECT p.id FROM zakeovich_dk_db_cphbusiness.product p WHERE p.name = '{proName}';")
     product_id = cursor.fetchall()
     
-    if product_id[0] != None:
-        product_id = product_id[0]
+    if len(product_id) != 0:
+        product_id = product_id[0][0]
         
         cursor.close()
         connection.close()
-        return product_id[0]
+        return product_id
     else:
-        productQuery = f"INSERT INTO zakeovich_dk_db_cphbusiness.product (name, price, fk_category_id) VALUES ('{product['p.name'][0]}', {product['ol.price'][0]}, {category_id});"
+        productQuery = f"INSERT INTO zakeovich_dk_db_cphbusiness.product (name, price, fk_category_id) VALUES ('{proName}', {proPrice}, {category_id});"
         cursor.execute(productQuery)
         connection.commit()
         product_id = cursor.lastrowid
@@ -66,24 +68,26 @@ def postNewProduct(category_id, product):
     
    
 
-def postNewCategory(product):
+def postNewCategory(product, index):
     connection = mysql.connector.connect(user='zakeovich_dk', password='wdfphg3mbker',
                                      host='mysql98.unoeuro.com',
                                      database='zakeovich_dk_db_cphbusiness')
-    cursor = connection.cursor()
-    cursor.execute(f"SELECT c.id FROM zakeovich_dk_db_cphbusiness.category c WHERE c.name = '{product['ca.name'][0]}'")
-    category_id = cursor.fetchall()
     
-    if category_id[0] != None:
-        category_id = category_id[0]
+    p_catagory_ = product['ca.name'][index]
+    cursor = connection.cursor()
+    cursor.execute(f"SELECT c.id FROM zakeovich_dk_db_cphbusiness.category c WHERE c.name = '{p_catagory_}'")    
+    list_category_id = cursor.fetchall()
+    
+    if len(list_category_id) != 0:
+        category_id = list_category_id[0][0]
     else:
-        categoryQuery = f"INSERT INTO zakeovich_dk_db_cphbusiness.category (name) VALUES ('{product['ca.name'][0]}');"
+        categoryQuery = f"INSERT INTO zakeovich_dk_db_cphbusiness.category (name) VALUES ('{p_catagory_}');"
         cursor.execute(categoryQuery)
         connection.commit()
         category_id = cursor.lastrowid
     
     cursor.close()
-    connection.close()
+    connection.close()  
     
     return category_id
 
@@ -105,26 +109,18 @@ def postOrderline(order_id, product_id):
 x = 0
 y = 0
 
-
 while x < len(customerInfoDF):
     customer = customerInfoDF.iloc[[x]]
     customer_id = postNewCustomer(customer)
     order_id = postNewOrder(customer_id, customer)
-    productInfoDF = graph.run(f"MATCH (c:Customer)-[:PLACED]->(o:Order)-[ol:CONTAINS]->(p:Product)-[:`IS A`]->(ca:Category) WHERE c.email = {customer['c.email'][0]}  RETURN p.name, ol.price, ol.quantity, ca.name").to_data_frame()
+    productInfoDF = graph.run(f"MATCH (c:Customer)-[:PLACED]->(o:Order)-[ol:CONTAINS]->(p:Product)-[:`IS A`]->(ca:Category) WHERE c.email = '{customer['c.email'][0]}'  RETURN p.name, ol.price, ol.quantity, ca.name").to_data_frame()
     
     x += 1
     while y < len(productInfoDF):
         product = productInfoDF.iloc[[y]]
-        category_id = postNewCategory(product)
-        product_id = postNewProduct(category_id)
+        category_id = postNewCategory(product, y)
+        product_id = postNewProduct(category_id, product, y)
         postOrderline(order_id, product_id)
         y += 1
         
-# =============================================================================
-# customer_id = postNewCustomer()
-# order_id = postNewOrder(customer_id)
-# category_id = postNewCategory()
-# product_id = postNewProduct(category_id)
-# 
-# postOrderline(order_id, product_id)
-# =============================================================================
+
