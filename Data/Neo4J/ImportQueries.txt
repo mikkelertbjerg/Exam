@@ -48,6 +48,9 @@ MERGE (a:Contact_Info {contact_info_id: contact_info_id})
   SET a.contactTypeId = contactTypeId, a.info = info
 RETURN count(a)
 
+
+
+
 // RELATIONS
 
 MATCH (a:Country),(b:Zipcode)
