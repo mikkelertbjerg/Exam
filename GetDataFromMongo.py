@@ -76,7 +76,7 @@ g_conn.create(country)
 #Order
 # =============================================================================
 order = Node("Order",
-             #_id = ['Customer']['Order']['Id'],
+             order_no = x['Customer']['Order']['OrderNumber'],
              status = x['Customer']['Order']['Status'],
              date = x['Customer']['Order']['DateCreated'],
              total = x['Customer']['Order']['Total'])

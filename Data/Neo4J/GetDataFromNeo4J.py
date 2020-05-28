@@ -4,7 +4,7 @@ import mysql.connector
 
 # Connection to  our Graph (Hosted by Google Cloud Platform)
 graph = neo.Graph("bolt://35-202-37-187.gcp-neo4j-sandbox.com:7687", auth=("neo4j", "cy3yxxzcXDN6UKnw"), secure=True)
-customerInfoDF = graph.run("MATCH (co:Country)<-[:`IS IN`]-(z:Zipcode)<-[:`IS IN`]-(ci:City)<-[:`IS IN`]-(a:Address)<-[:`LIVES AT`]-(c:Customer)-[:PLACED]->(o:Order) WHERE o.status = 'submitted' OR o.status = 'pending' RETURN c.first_name,c.last_name,c.birth_date, c.email, c.gender, c.phone, o.date, o.total, o.status").to_data_frame()
+customerInfoDF = graph.run("MATCH (co:Country)<-[:`IS IN`]-(z:Zipcode)<-[:`IS IN`]-(ci:City)<-[:`IS IN`]-(a:Address)<-[:`LIVES AT`]-(c:Customer)-[:PLACED]->(o:Order) WHERE o.status = 'submitted' OR o.status = 'pending' RETURN c.first_name,c.last_name,c.birth_date, c.email, c.gender, c.phone, o.date, o.total, o.status, o.order_no").to_data_frame()
 
 #productInfoDF = graph.run("MATCH (c:Customer)-[:PLACED]->(o:Order)-[ol:CONTAINS]->(p:Product)-[:`IS A`]->(ca:Category) RETURN p.name, ol.price, ol.quantity, ca.name").to_data_frame()
 
@@ -14,7 +14,7 @@ def postNewOrder(customer_id, customer):
                                      host='mysql98.unoeuro.com',
                                      database='zakeovich_dk_db_cphbusiness')
     cursor = connection.cursor()
-    orderQuery = f"INSERT INTO zakeovich_dk_db_cphbusiness.order (fk_customer_id, total, date, status) VALUES ({customer_id},{customer['o.total'][0]}, '{customer['o.date'][0]}:00', '{customer['o.status'][0]}');"
+    orderQuery = f"INSERT INTO zakeovich_dk_db_cphbusiness.order (fk_customer_id, order_no, total, date, status) VALUES ({customer_id}, {customer['o.order_no'][0]}, {customer['o.total'][0]}, '{customer['o.date'][0]}:00', '{customer['o.status'][0]}');"
     cursor.execute(orderQuery)
     connection.commit()
     order_id = cursor.lastrowid
@@ -64,10 +64,6 @@ def postNewProduct(category_id, product, index):
         connection.close()
         return product_id
     
-    
-    
-   
-
 def postNewCategory(product, index):
     connection = mysql.connector.connect(user='zakeovich_dk', password='wdfphg3mbker',
                                      host='mysql98.unoeuro.com',
