@@ -10,7 +10,7 @@ customerInfoDF = graph.run("MATCH (co:Country)<-[:`IS IN`]-(z:Zipcode)<-[:`IS IN
 
 
 def postNewOrder(customer_id, customer):
-    connection = mysql.connector.connect(user='zakeovich_dk', password='wdfphg3mbker',
+    connection = mysql.connector.connect(
                                      host='mysql98.unoeuro.com',
                                      database='zakeovich_dk_db_cphbusiness')
     cursor = connection.cursor()
@@ -25,7 +25,7 @@ def postNewOrder(customer_id, customer):
 
 
 def postNewCustomer(customer):
-    connection = mysql.connector.connect(user='zakeovich_dk', password='wdfphg3mbker',
+    connection = mysql.connector.connect(
                                      host='mysql98.unoeuro.com',
                                      database='zakeovich_dk_db_cphbusiness')
     cursor = connection.cursor()
@@ -39,7 +39,7 @@ def postNewCustomer(customer):
     return customer_id
 
 def postNewProduct(category_id, product, index):
-    connection = mysql.connector.connect(user='zakeovich_dk', password='wdfphg3mbker',
+    connection = mysql.connector.connect(
                                      host='mysql98.unoeuro.com',
                                      database='zakeovich_dk_db_cphbusiness')
     proName = product['ca.name'][index]
@@ -65,7 +65,7 @@ def postNewProduct(category_id, product, index):
         return product_id
     
 def postNewCategory(product, index):
-    connection = mysql.connector.connect(user='zakeovich_dk', password='wdfphg3mbker',
+    connection = mysql.connector.connect(
                                      host='mysql98.unoeuro.com',
                                      database='zakeovich_dk_db_cphbusiness')
     
@@ -88,7 +88,7 @@ def postNewCategory(product, index):
     return category_id
 
 def postOrderline(order_id, product_id):
-    connection = mysql.connector.connect(user='zakeovich_dk', password='wdfphg3mbker',
+    connection = mysql.connector.connect(
                                      host='mysql98.unoeuro.com',
                                      database='zakeovich_dk_db_cphbusiness')
     cursor = connection.cursor()
