@@ -3,14 +3,14 @@ import pandas as pd
 import mysql.connector
 
 # Connection to  our Graph (Hosted by Google Cloud Platform)
-graph = neo.Graph("bolt://35-202-37-187.gcp-neo4j-sandbox.com:7687", auth=("neo4j", "cy3yxxzcXDN6UKnw"), secure=True)
+graph = neo.Graph("bolt://localhost:7687", auth=("neo4j", "1234"), secure=True)
 customerInfoDF = graph.run("MATCH (co:Country)<-[:`IS IN`]-(z:Zipcode)<-[:`IS IN`]-(ci:City)<-[:`IS IN`]-(a:Address)<-[:`LIVES AT`]-(c:Customer)-[:PLACED]->(o:Order) WHERE o.status = 'submitted' OR o.status = 'pending' RETURN c.first_name,c.last_name,c.birth_date, c.email, c.gender, c.phone, o.date, o.total, o.status, o.order_no").to_data_frame()
 
 #productInfoDF = graph.run("MATCH (c:Customer)-[:PLACED]->(o:Order)-[ol:CONTAINS]->(p:Product)-[:`IS A`]->(ca:Category) RETURN p.name, ol.price, ol.quantity, ca.name").to_data_frame()
 
 
 def postNewOrder(customer_id, customer):
-    connection = mysql.connector.connect(
+    connection = mysql.connector.connect(user='zakeovich_dk', password='wdfphg3mbker',
                                      host='mysql98.unoeuro.com',
                                      database='zakeovich_dk_db_cphbusiness')
     cursor = connection.cursor()
@@ -25,7 +25,7 @@ def postNewOrder(customer_id, customer):
 
 
 def postNewCustomer(customer):
-    connection = mysql.connector.connect(
+    connection = mysql.connector.connect(user='zakeovich_dk', password='wdfphg3mbker',
                                      host='mysql98.unoeuro.com',
                                      database='zakeovich_dk_db_cphbusiness')
     cursor = connection.cursor()
@@ -39,7 +39,7 @@ def postNewCustomer(customer):
     return customer_id
 
 def postNewProduct(category_id, product, index):
-    connection = mysql.connector.connect(
+    connection = mysql.connector.connect(user='zakeovich_dk', password='wdfphg3mbker',
                                      host='mysql98.unoeuro.com',
                                      database='zakeovich_dk_db_cphbusiness')
     proName = product['ca.name'][index]
@@ -65,7 +65,7 @@ def postNewProduct(category_id, product, index):
         return product_id
     
 def postNewCategory(product, index):
-    connection = mysql.connector.connect(
+    connection = mysql.connector.connect(user='zakeovich_dk', password='wdfphg3mbker',
                                      host='mysql98.unoeuro.com',
                                      database='zakeovich_dk_db_cphbusiness')
     
@@ -88,7 +88,7 @@ def postNewCategory(product, index):
     return category_id
 
 def postOrderline(order_id, product_id):
-    connection = mysql.connector.connect(
+    connection = mysql.connector.connect(user='zakeovich_dk', password='wdfphg3mbker',
                                      host='mysql98.unoeuro.com',
                                      database='zakeovich_dk_db_cphbusiness')
     cursor = connection.cursor()

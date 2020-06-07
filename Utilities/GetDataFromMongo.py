@@ -22,7 +22,7 @@ x
 #Local
 #graph = Graph("bolt://localhost:7687", auth=("neo4j", "test"))
 #Hosted
-graph = Graph("bolt://35-202-37-187.gcp-neo4j-sandbox.com:7687", auth=("neo4j", "cy3yxxzcXDN6UKnw"), secure=True)
+graph = Graph("bolt://localhost:7687", auth=("neo4j", "1234"), secure=True)
 #graph = Graph(scheme='bolt',host='hobby-ppgaodfmmciegbkemkpmdcel.dbs.graphenedb.com',port=24787, user='dbexam', password='5.5mtzoqF4XiFf.mLUvQx7I7UiJ1QZV',secure=True)
 #Open the connection
 g_conn = graph.begin()
